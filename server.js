@@ -8,6 +8,8 @@ const router = express.Router();
 
 let data;
 
+require('dotenv').config();
+
 router.route('/').get((req,res)=>{
 
     res.redirect("/data");
@@ -29,6 +31,8 @@ router.route('/data').post((req,res)=>{
 
 app.use(router);
 
-app.listen(8080,()=>{
-    console.log('server running on localhost:8080....');
+const port = process.env.PORT || 8080;
+
+app.listen(port ,"0.0.0.0",()=>{
+    console.log(`server running on localhost:${port}....`);
 })
